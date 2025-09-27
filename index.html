@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>NeuroScript</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #020c1b, #041830, #061d3a, #0a2448, #020c1b);
+      background-attachment: fixed;
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Fundo partículas */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Painéis */
+    .panel {
+      background: rgba(10, 40, 70, 0.8);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+      width: 380px;
+      max-width: 95%;
+      padding: 20px;
+    }
+
+    /* Painel esquerdo */
+    .fixed-announcement {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+    }
+
+    /* Painel avaliações */
+    .fixed-eval {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      max-height: 380px;
+      overflow-y: auto;
+    }
+
+    .fixed-eval strong {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+    }
+
+    /* Painel versão PRO */
+    .fixed-pro {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      text-align: left;
+    }
+
+    .fixed-pro h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .fixed-pro .btn-wrapper {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Card central */
+    .main-card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 30px;
+    }
+
+    .main-card img {
+      margin-bottom: 15px;
+    }
+
+    .main-card h2 {
+      margin: 15px 0;
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-free {
+      background: #00e5ff;
+      color: black;
+      box-shadow: 0 0 12px #00e5ff, 0 0 25px #00e5ff;
+      width: 90%;
+      max-width: 300px;
+      font-size: 1.2rem;
+      padding: 16px 26px;
+      margin-top: 20px;
+    }
+
+    .btn-free:hover {
+      background: #00ffff;
+      box-shadow: 0 0 20px #00ffff, 0 0 35px #00ffff;
+    }
+
+    .btn-pro {
+      background: #ffcc00;
+      color: black;
+      box-shadow: 0 0 12px #ffcc00, 0 0 25px #ffcc00;
+    }
+
+    .btn-pro:hover {
+      background: #ffe066;
+      box-shadow: 0 0 20px #ffe066, 0 0 35px #ffe066;
+    }
+
+    .btn-disabled {
+      background: #444;
+      color: #aaa;
+      cursor: not-allowed;
+      box-shadow: none;
+      pointer-events: none;
+      margin-top: 12px;
+    }
+
+    /* Listas */
+    ul {
+      padding-left: 20px;
+      margin: 12px 0 15px 0;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    /* Popup Copiado */
+    .popup {
+      margin-top: 15px;
+      display: inline-block;
+      background: rgba(0, 255, 150, 0.95);
+      color: black;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+    }
+
+    .popup.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .fixed-announcement, .fixed-eval, .fixed-pro {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 380px;
+      }
+
+      .main-card {
+        width: 90%;
+        max-width: 380px;
+        padding: 20px;
+      }
+
+      body {
+        overflow-y: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <!-- Painel esquerdo -->
+  <div class="fixed-announcement panel">
+    <h2>⚡ Aviso sobre o NeuroScript</h2>
+    <p>Obrigado por apoiar o <strong>NeuroScript</strong> 🙌</p>
+    <ul>
+      <li>📌 O script ainda está em <strong>desenvolvimento</strong></li>
+      <li>🐞 Pode conter alguns bugs</li>
+      <li>🛠️ Estado: Em teste</li>
+      <li>✍️ Autor: <strong>SCP</strong></li>
+    </ul>
+    <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
+    <p style="margin-top:15px;">⭐ Gostou do nosso script? Deixe sua avaliação e ajude o projeto a crescer 🚀</p>
+    <button class="btn btn-disabled">⭐ Avalie Aqui (Em manutenção)</button>
+  </div>
+
+  <!-- Card central -->
+  <div class="main-card panel">
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="150">
+    <h2>⚡🤖 Obter NeuroScript</h2>
+    <p>Clique abaixo para copiar o script da versão Free:</p>
+    <button id="btnFree" class="btn btn-free">⚡ Obter Versão Free</button>
+    <div id="popup" class="popup">✅ Copiado Script NeuroScript</div>
+  </div>
+
+  <!-- Painel avaliações -->
+  <div class="fixed-eval panel">
+    <h3>⭐ Avaliações dos Usuários</h3>
+    <div id="reviews"></div>
+  </div>
+
+  <!-- Painel PRO -->
+  <div class="fixed-pro panel">
+    <h3>🚀 Versão PRO</h3>
+    <ul>
+      <li>🆓 <strong>Free</strong>: ⚡ Teleporte, 🕊️ Fly, 🎚️ Velocidade, 🤖 Auto Collect</li>
+      <li>💎 <strong>PRO</strong>: Tudo do Free + 🌍 Servidores extras + 📦 Coleta automática</li>
+      <li>🎁 <strong>Distribuição gratuita</strong> por tempo limitado!</li>
+    </ul>
+    <div class="btn-wrapper">
+      <button id="btnPro" class="btn btn-pro">🔥 Obter Versão PRO</button>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    © 2025 NeuroScript. Todos os direitos reservados.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Partículas
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: "#00ffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        move: { enable: true, speed: 1.5, out_mode: "out" }
+      }
+    });
+
+    // Botão Free - copiar
+    document.getElementById("btnFree").addEventListener("click", () => {
+      const scriptFree = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/bzzer244-boop/NeuroScriptFree/refs/heads/main/NeuroScript.lua"))()';
+      navigator.clipboard.writeText(scriptFree).then(() => {
+        const popup = document.getElementById("popup");
+        popup.classList.add("show");
+        setTimeout(() => popup.classList.remove("show"), 2500);
+      });
+    });
+
+    // Botão PRO
+    document.getElementById("btnPro").addEventListener("click", () => {
+      window.location.href = "https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server";
+    });
+
+    // Avaliações dinâmicas
+    const names = ["Ana","Gabriel","Lucas","Beatriz","Mariana","João","Thiago","Pedro","Sofia","Rafa"];
+    const reviews = ["Valeu cada segundo!","Simples e eficiente!","Top demais!","Ótimo desempenho!","Funciona perfeito!"];
+
+    function addReview() {
+      const container = document.getElementById("reviews");
+      const name = names[Math.floor(Math.random() * names.length)];
+      const text = reviews[Math.floor(Math.random() * reviews.length)];
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>${name}</strong>: ${text}`;
+      container.prepend(p);
+      if (container.childElementCount > 10) {
+        container.removeChild(container.lastChild);
+      }
+    }
+
+    for (let i = 0; i < 5; i++) addReview();
+    setInterval(addReview, 3000);
+  </script>
+</body>
+</html>
