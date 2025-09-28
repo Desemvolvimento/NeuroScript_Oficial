@@ -3,6 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>NeuroScript</title>
+
+  <!-- 🔹 SEO Básico -->
+  <meta name="description" content="NeuroScript — Script grátis e PRO para Roblox, com funções avançadas como teleporte, fly, auto collect e muito mais!">
+  <meta name="keywords" content="NeuroScript, Roblox Script, Script Grátis, Script PRO, Roblox Exploit">
+  <meta name="author" content="SCP">
+
+  <!-- 🔹 Open Graph (para Discord/WhatsApp/Redes Sociais) -->
+  <meta property="og:title" content="NeuroScript — Scripts Free & PRO para Roblox">
+  <meta property="og:description" content="Scripts poderosos para Roblox com versão gratuita e PRO.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/Banner.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seudominio.com">
+
   <style>
     body {
       margin: 0;
@@ -20,6 +33,21 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+    }
+
+    /* 🔹 Banner */
+    .banner {
+      width: 100%;
+      max-height: 200px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .banner img {
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
     }
 
     /* Painéis */
@@ -74,10 +102,10 @@
 
     /* Card central */
     .main-card {
-      position: fixed;
-      top: 50%;
+      position: relative;
+      top: 20px;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       text-align: center;
       padding: 30px;
     }
@@ -211,6 +239,11 @@
 <body>
   <div id="particles-js"></div>
 
+  <!-- 🔹 Banner -->
+  <div class="banner">
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/Banner.png" alt="Banner NeuroScript">
+  </div>
+
   <!-- Painel esquerdo -->
   <div class="fixed-announcement panel">
     <h2>⚡ Aviso sobre o NeuroScript</h2>
@@ -228,7 +261,7 @@
 
   <!-- Card central -->
   <div class="main-card panel">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="150">
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/LogoOriginal.png" alt="NeuroScript Logo" width="150">
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique abaixo para copiar o script da versão Free:</p>
     <button id="btnFree" class="btn btn-free">⚡ Obter Versão Free</button>
